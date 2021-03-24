@@ -1,0 +1,95 @@
+@font-face {
+  font-family : "ubuntu";
+  src         : url("../media/fonts/ubuntu.ttf");
+}
+
+@font-face {
+  font-family : "mk2";
+  src         : url("../media/fonts/mk2.ttf");
+}
+
+@font-face {
+  font-family : "title";
+  src         : url("../media/fonts/title.ttf");
+}
+
+body.body {
+  display : grid;
+  margin  : 0;
+  padding : 0;
+  border  : 0;
+}
+
+div.background {
+  height           : auto;
+  min-height       : 100vh;
+  margin           : 0;
+  padding          : 0;
+  background-color : #424242;
+}
+
+div.topbar {
+  width       : auto;
+  height      : auto;
+  margin      : 2%;
+  color       : #F5F5F5;
+  text-align  : left;
+  font-family : 'title';
+}
+
+a.topbar {
+  color           : #F5F5F5;
+  text-decoration : none;
+  font-size       : 40pt;
+  transition      : 0.5s;
+}
+
+a.topbar:hover {
+  font-size : 43pt;
+}
+
+div.sidebar {
+  width      : 4vw;
+  height     : auto;
+  float      : left;
+  margin     : 2%;
+  color      : #F5F5F5;
+  text-align : center;
+}
+
+a.sidebar {
+  display         : inline-block;
+  padding         : 10% 1% 60% 10%;
+  color           : #F5F5F5;
+  text-align      : center;
+  text-decoration : none;
+  font-size       : 30pt;
+  transition      : 0.5s;
+}
+
+a.sidebar:hover {
+  font-size : 40pt;
+}
+
+a.buttontext {
+  margin : 10px;
+}
+
+div.buttons {
+  display          : inline-block;
+  width            : fit-content;
+  margin           : 1%;
+  color            : #424242;
+  border-radius    : 5px;
+  background-color : #F5F5F5;
+  outline          : none;
+  transition       : 0.5s;
+}
+
+div.buttons:hover {
+  background-color : #C2C2C2;
+}
+
+div.buttons:focus {
+  background-color : #C2C2C2;
+}

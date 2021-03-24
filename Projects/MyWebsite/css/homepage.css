@@ -1,0 +1,51 @@
+a.link {
+  color      : #F5F5F5;
+  text-align : center;
+  transition : 0.5s;
+}
+
+a.link:hover {
+  font-size : 40pt;
+}
+
+div.allinfo {
+  width       : auto;
+  height      : auto;
+  padding     : 1%;
+  color       : #F5F5F5;
+  text-align  : center;
+  font-family : 'ubuntu';
+}
+
+div.mainheader {
+  margin    : 1%;
+  font-size : 30pt;
+}
+
+div.buttons {
+  display          : inline-block;
+  margin           : 1%;
+  color            : #424242;
+  border-radius    : 5px;
+  background-color : #F5F5F5;
+  outline          : none;
+  font-size        : 40pt;
+  font-weight      : 200;
+  transition       : 0.5s;
+}
+
+div.buttons:hover {
+  background-color : #C2C2C2;
+  font-size        : 45pt;
+}
+
+div.buttons:focus {
+  background-color : #C2C2C2;
+  outline          : none;
+}
+
+a.buttontext {
+  margin          : 10px;
+  color           : #424242;
+  text-decoration : none;
+}

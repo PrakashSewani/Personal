@@ -1,0 +1,21 @@
+div.content {
+  width       : 80vw;
+  height      : auto;
+  padding     : 5% 10% 10% 10%;
+  color       : #F5F5F5;
+  text-align  : center;
+  font-family : 'ubuntu';
+  margin    : 1% 1% 1% 1%;
+  font-size : 30pt;
+}
+a.strava {
+    display         : inline-block;
+    color      : #F5F5F5;
+    text-align : center;
+    font-size       : 70pt;
+    transition      : 0.5s;
+    margin: 5%;
+}
+a.strava:hover {
+  font-size : 90pt;
+}

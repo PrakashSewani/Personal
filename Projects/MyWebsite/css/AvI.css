@@ -1,0 +1,20 @@
+div.content {
+  width       : auto;
+  height      : auto;
+  padding     : 1%;
+  color       : #F5F5F5;
+  text-align  : center;
+  font-family : 'ubuntu';
+  margin    : 1%;
+  font-size : 30pt;
+}
+table.content {
+    width       : auto;
+    height      : auto;
+    float: right;
+    color       : #F5F5F5;
+    text-align  : center;
+    font-family : 'ubuntu';
+    margin    : 5%;
+    font-size : 30pt;
+}
