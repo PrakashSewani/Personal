@@ -109,7 +109,7 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
     
-    if message.content.startswith('$naveen'):
+    if message.content.startswith('$qoute'):
         quote = get_quote()
         await message.channel.send(quote)
 
@@ -165,6 +165,6 @@ async def on_message(message):
         await message.channel.send("<LECTURE NAME> all caps :)")
     
     if message.content.startswith('$help easteregg'):
-       await message.channel.send("Try $naveen ;)") 
+       await message.channel.send("Try $qoute ;)") 
 
 client.run('ODIwMzcyNTUyMTM5OTMxNjg4.YE0Neg.3ldaHGaAFASTPD-_NWt4HpqkmwU')
