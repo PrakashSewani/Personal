@@ -167,4 +167,4 @@ async def on_message(message):
     if message.content.startswith('$help easteregg'):
        await message.channel.send("Try $qoute ;)") 
 
-client.run('ODIwMzcyNTUyMTM5OTMxNjg4.YE0Neg.3ldaHGaAFASTPD-_NWt4HpqkmwU')
+client.run('ODIwMzcyNTUyMTM5OTMxNjg4.YE0Neg.ervB4U__RoTgxPPq1R_b33VxTW0')
