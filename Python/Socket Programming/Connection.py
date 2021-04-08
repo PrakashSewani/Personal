@@ -11,6 +11,7 @@ port=80
 
 try:
     host_ip=socket.gethostbyname('www.google.com')
+    print(host_ip)
 except socket.gaierror:
     # this means could not resolve the host 
     print ("There was an error resolving the host")
@@ -19,3 +20,6 @@ except socket.gaierror:
 s.connect((host_ip,port))
 
 print('Socket successfully connected to google')
+
+f=socket.gethostbyaddr('www.google.com')
+print(f)
