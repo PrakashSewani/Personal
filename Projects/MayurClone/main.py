@@ -83,4 +83,9 @@ async def on_message(message):
         for j in mainlist:
             await message.channel.send(j)
 
-client.run('ODI3ODM1NzcyMTQ5MzAxMjY5.YGg0JA.O9Q0Wfnm1TOZHtCFYAwn2n5snBw')
+key = ''
+
+with open('token.txt','r') as f:
+    key = f.read()
+    
+client.run(key)
