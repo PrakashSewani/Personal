@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <script src="validate.js">
+            
+        </script>
+    </head>
+    <body>
+        <div class="centredivision">
+            <p>
+            <b>LOGIN</b>    
+            </p>
+            <form name="myForm">
+                <p>Email Address</p>
+                <input type="text" name="fname"><br>
+                <p>Password</p>
+                <input type="password" name="pass"><br>
+                <input type="submit" value="Submit" onclick="return validateform()">
+            </form>
+        </div>
+        <!-- <script>
+            function validateform(){
+                let x=document.forms["myForm"]["fname"].value;
+                if(x==""){
+                    alert("Email is necessary");
+                    return false;
+                }
+            }
+        </script> -->
+    </body>
+</html>
