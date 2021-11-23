@@ -1,0 +1,14 @@
+n=10
+t=n
+while(t!=0):
+    print(t%2)
+    t//=2
+a=100
+i=0
+decimal=0
+while(a!=0):
+    dec=a%10
+    decimal=decimal+dec*pow(2,i)
+    a=a//10
+    i+=1
+print(decimal)
