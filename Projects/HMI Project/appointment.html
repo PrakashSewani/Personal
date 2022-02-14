@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="topnav">
+        <div class="Hname">
+            <a href="#home">Fortis Hospital</a>
+        </div>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#staff">Staff</a>
+        <a class="active" href="#home">Home</a>
+    </div>
+    <div class="formcontainer">
+        <div class="forms">
+            <form action="action_page.php">
+                <label for="fname">First Name:</label>
+                <br>
+                <input type="text" id="fname" name="firstname" placeholder="First Name....">
+                <br>
+                <label for="lname">Last Name:</label>
+                <br>
+                <input type="text" id="lname" name="lastname" placeholder="Last Name....">
+                <br>
+                <label for="date">Visitation Date:</label>
+                <br>
+                <input type="date" id="date" name="Visitation Date" value="">
+                <br>
+                <label for="dname">Doctor:</label>
+                <br>
+                <select name="doctors" id="doctor">
+                    <option value="doctor1">1</option>
+                    <option value="doctor2">2</option>
+                    <option value="doctor3">3</option>
+                    <option value="doctor4">4</option>
+                    <option value="doctor5">5</option>
+                    <option value="doctor6">6</option>
+                    <option value="doctor7">7</option>
+                    <option value="doctor8">8</option>
+                    <option value="doctor9">9</option>
+                </select>
+                <br>
+                <label for="reason">Reason for Visitation:</label>
+                <br>
+                <textarea name="reason" id="reason" cols="30" rows="5" placeholder="Write something here"></textarea>
+                <br>
+                <input type="submit" value="Book an Appointment">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
