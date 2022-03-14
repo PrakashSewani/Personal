@@ -1,0 +1,4 @@
+https://kili-technology.com/blog/chatbot-training-datasets/
+https://towardsdatascience.com/how-to-build-your-own-chatbot-using-deep-learning-bb41f970e281
+https://hotpotqa.github.io/
+http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_test_fullwiki_v1.json
