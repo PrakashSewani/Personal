@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" href="appoint.css">
+    <script>
+function show1(){
+  document.getElementById('div2').style.display ='block';
+  document.getElementById('div1').style.display='none'
+}
+function show2(){
+    document.getElementById('div1').style.display = 'block';
+  document.getElementById('div2').style.display='none'
+}
+    </script>
+</head>
+<div class="topnav">
+    <div class="Hname">
+        <a class="navbar-brand"><img src="fortis.png" width="25" height="25" alt=""></a>
+        <a href="index.html">Fortis Hospital</a>
+    </div>
+    <a href="admin.html">Admin</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="#staff">Staff</a>
+    <a class="active" href="index.html">Home</a>
+</div>
+<div class="bill">
+
+    <img src="fortis.png" style="height: 70px;width: 70px;padding-left: 100px;">
+    <h2 style="color: green;text-align: center;">Fortis</h2>
+
+    <h2 style="color: black;font-size: 15px;">Doctor's Name</h2>
+    <select class="doctor">
+        <option value="1">Doctor</option>
+        <option value="2">Doctor</option>
+        <option value="3">Doctor</option>
+        <option value="4">Doctor</option>
+        <option value="5">Doctor</option>
+       </select>
+    <h2 style="color: black;font-size: 15px;">Do You Have Unique ID</h2>
+    <div class="radio">
+        <input type="radio" name="tab" value="no" onclick="show1();"/>No
+        <input type="radio" name="tab" value="yes" onclick="show2();"/>Yes
+    </div>
+    <div id="div1" class="hide">
+       <input type="text" id="uid" name="uid" placeholder="Enter your UID">
+    </div>
+    <div id="div2" class="hide">
+        <input type="text" id="uid" name="name" placeholder="Enter your Name">
+    </div>
+    <h2 style="color: black;font-size: 15px;">Date Of Check-up</h2>
+    <div class="coc-form">
+        <div class="coc-block-row">
+            <label class="coc-block-label" for="dateofbirth"></label>
+            <div class="coc-block">
+                <input class="coc-input" type="date" name="dateofbirth" id="dateofbirth">
+            </div>
+        </div>
+    </div>
+    <h2 style="color: black;font-size: 15px;">Reason for Visit</h2>
+    <div class="appointment">
+        <label for="fname"></label>
+        <textarea style="height:80px; width:97.4%; background: #04AA6D; border-radius: 8px;" type="text" id="fname" name="fname"></textarea>
+    </div>
+    <div class="submit">
+        <button class="button">Submit</button>
+    </div>
+</div>
+</html>
