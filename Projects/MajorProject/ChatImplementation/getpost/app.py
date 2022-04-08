@@ -79,10 +79,10 @@ def get_answer(usermessage):
     elif content.findAll('a',{'class':'FLP8od'})!=[]:
         title=content.findAll('a',{'class':'FLP8od'})
         return (str(title[0]).split(">")[1].split("<")[0])
-        # with open('temp.txt','w',encoding='utf-8') as f:
-        #     f.write(html)
     elif content.findAll('div',{'class':'Z0LcW'})!=[]:
         return str(content.findAll('div',{'class':'Z0LcW'}))
+    else:
+        return getanswer(usermessage)
 
 @app.route("/")
 def home():
