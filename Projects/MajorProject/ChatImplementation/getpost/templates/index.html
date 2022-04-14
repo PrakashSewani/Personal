@@ -17,16 +17,17 @@
   <section class="msger">
     <header class="msger-header">
       <div class="msger-header-title">
-        <i class="fas fa-book"></i>  SmartEDU Bot  <i class="fas fa-book"></i>
-      </div>
-      <div class="selectbook">
-        <select id="book-select">
-          <option value="">--Please choose an option--</option>
-          <option value="PHY11">PHY11</option>
-          <option value="BIO11">BIO11</option>
-          <option value="PHY12">PHY12</option>
-          <option value="BIO12">BIO12</option>
-      </select>
+        <i class="fas fa-book"></i>  SmartEDU Bot  
+        <div class="selectbook">
+          Please Select Your Department
+          <select id="book-select">
+            <option value="n">--Please choose an option--</option>
+            <option value="p1">PHY11</option>
+            <option value="b1">BIO11</option>
+            <option value="p2">PHY12</option>
+            <option value="b2">BIO12</option>
+          </select>
+        </div>
       </div>
     </header>
 
@@ -74,9 +75,13 @@
       const msgText = msgerInput.value;
       if (!msgText) return;
 
+      var book=document.getElementById("book-select");
+
+      var selectedbook=book.value;
+
       appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
       msgerInput.value = "";
-      botResponse(msgText);
+      botResponse(msgText,selectedbook);
     });
 
     function appendMessage(name, img, side, text) {
@@ -120,12 +125,13 @@
       msgerChat.scrollTop += 500;
     }
 
-    function botResponse(rawText) {
+    function botResponse(rawText,selectedbook) {
 
       // Bot Response
-      $.get("/get", { msg: rawText }).done(function (data) {
+      $.get("/get", { msg: rawText+","+selectedbook }).done(function (data) {
         console.log(rawText);
         console.log(data);
+        console.log(selectedbook)
         const msgText = data;
         appendMessagetest(BOT_NAME, BOT_IMG, "left", msgText);
 

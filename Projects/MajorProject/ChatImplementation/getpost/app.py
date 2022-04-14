@@ -78,18 +78,73 @@ def webscrapper(userquery):
     else:
         return getanswer(usermessage)
 
-def pdfscrapper(userquery):
-    with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
-        lines=f.readlines()
-    txt=str(lines).split(",",1)[1]
-    txtsplit=txt.split("\\n")
-    tokenizedpdf=[]
-    for i in txtsplit:
-        temp=str(i).replace("\\","")
-        tokenizedpdf.append(temp)
-    while("" in tokenizedpdf) :
-        tokenizedpdf.remove("")
-    tokenizedpdf=tokenizedpdf[:-1]
+def pdfscrapper(userquery,department):
+    if department=='p1':
+        with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+            lines=f.readlines()
+        txt=str(lines).split(",",1)[1]
+        txtsplit=txt.split("\\n")
+        tokenizedpdf=[]
+        for i in txtsplit:
+            temp=str(i).replace("\\","")
+            tokenizedpdf.append(temp)
+        while("" in tokenizedpdf) :
+            tokenizedpdf.remove("")
+        tokenizedpdf=tokenizedpdf[:-1]
+
+    elif department=='p2':
+        with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+            lines=f.readlines()
+        txt=str(lines).split(",",1)[1]
+        txtsplit=txt.split("\\n")
+        tokenizedpdf=[]
+        for i in txtsplit:
+            temp=str(i).replace("\\","")
+            tokenizedpdf.append(temp)
+        while("" in tokenizedpdf) :
+            tokenizedpdf.remove("")
+        tokenizedpdf=tokenizedpdf[:-1]
+
+    elif department=='b1':
+        with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+            lines=f.readlines()
+        txt=str(lines).split(",",1)[1]
+        txtsplit=txt.split("\\n")
+        tokenizedpdf=[]
+        for i in txtsplit:
+            temp=str(i).replace("\\","")
+            tokenizedpdf.append(temp)
+        while("" in tokenizedpdf) :
+            tokenizedpdf.remove("")
+        tokenizedpdf=tokenizedpdf[:-1]
+
+    elif department=='b2':
+        with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+            lines=f.readlines()
+        txt=str(lines).split(",",1)[1]
+        txtsplit=txt.split("\\n")
+        tokenizedpdf=[]
+        for i in txtsplit:
+            temp=str(i).replace("\\","")
+            tokenizedpdf.append(temp)
+        while("" in tokenizedpdf) :
+            tokenizedpdf.remove("")
+        tokenizedpdf=tokenizedpdf[:-1]
+
+    else:
+        return "Please Select an appropriate Department for your queries"
+    
+    # with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+    #     lines=f.readlines()
+    # txt=str(lines).split(",",1)[1]
+    # txtsplit=txt.split("\\n")
+    # tokenizedpdf=[]
+    # for i in txtsplit:
+    #     temp=str(i).replace("\\","")
+    #     tokenizedpdf.append(temp)
+    # while("" in tokenizedpdf) :
+    #     tokenizedpdf.remove("")
+    # tokenizedpdf=tokenizedpdf[:-1]
 
     keywords=keyword_extractor(userquery)
 
@@ -136,6 +191,24 @@ def pdfscrapper(userquery):
 
     return(answer)
 
+# def questionclassifier(userquery):
+#     classifier=userquery.split(",")
+#     if classifier[1]=='p1':
+#         return pdfscrapper(classifier[0],classifier[1])
+#         pass
+#     elif classifier[1]=='p2':
+#         return 'You have Selected P2'
+#         pass
+#     elif classifier[1]=='b1':
+#         return 'You have Selected B1'
+#         pass
+#     elif classifier[1]=='b2':
+#         return 'You have Selected B2'
+#         pass
+#     else:
+#         return 'Please select your specific department before asking a question'
+#         pass
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -143,7 +216,10 @@ def home():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return pdfscrapper(userText)
+    # return pdfscrapper(userText)
+    classifier=userText.split(",")
+    print(classifier[0],classifier[1])
+    return(pdfscrapper(classifier[0],classifier[1]))
 
 
 if __name__ == "__main__":

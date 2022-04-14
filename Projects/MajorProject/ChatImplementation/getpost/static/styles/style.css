@@ -46,14 +46,14 @@
     font-size: medium;
     justify-content: space-between;
     padding: 10px;
-    text-align: center;
+    /* text-align: center; */
     border-bottom: var(--border);
     background: #eee;
     color: #666;
   }
 
   .selectbook{
-    
+    float: right;
   }
   
   .msger-chat {
