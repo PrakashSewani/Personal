@@ -12,6 +12,7 @@ for i in dark:
 
 while("" in harsh) :
     harsh.remove("")
+print(harsh)
 
 harsh=harsh[:-1]
 

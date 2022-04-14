@@ -26,6 +26,7 @@ for i in range(0, len(harsh)):
         for j in range(i,i+15):
             print("success")
             dhokla+=harsh[j+1]
+        break
 
 print(dhokla)
 

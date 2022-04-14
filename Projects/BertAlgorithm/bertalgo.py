@@ -3,7 +3,7 @@ from transformers import BertForQuestionAnswering
 from transformers import BertTokenizer
 import yake
 
-with open(r'D:\Python\Projects\BertAlgorithm\text.txt','r',encoding='utf-8') as f:
+with open(r'D:\Python\Projects\BertAlgorithm\linkedin.txt','r',encoding='utf-8') as f:
     lines=f.readlines()
 
 txt=str(lines).split(",",1)[1]
@@ -39,7 +39,7 @@ for i in range(0, len(harsh)):
     if set(keywords[0][0].split()).issubset(set(harsh[i].split())):
         # print("success")
         print(i)
-        for j in range(i,i+27):
+        for j in range(i,i+20):
             # print("success")
             dhokla+=harsh[j+1]
         break

@@ -7,34 +7,28 @@ from bs4 import BeautifulSoup
 import json
 import re
 import csv
+import torch
+from transformers import BertForQuestionAnswering
+from transformers import BertTokenizer
 
 app = Flask(__name__)
 app.static_folder = 'static'
 
-def getanswer(message):
-    text=message
-    language="en"
+def keyword_extractor(userquery):
+    text=userquery
+    language='en'
     max_ngram_size=3
     deduplication_threshold=0.9
     numOfKeywords=20
     custom_kw_extractor=yake.KeywordExtractor(lan=language,n=max_ngram_size,dedupLim=deduplication_threshold,top=numOfKeywords,features=None)
     keywords=custom_kw_extractor.extract_keywords(text)
-    print("Extracted keywords are: ")
+    print("Extracted Keywords are: ")
     print(keywords)
-    try:
-        for i in range(len(keywords)):
-            text=wikipedia.summary(keywords[i][0])
-            return (text)
-            # doc=nlp(text)
-            # print("Suggested Keywords: ")
-            # print(doc.ents)
-            # flag=input("Satisfied with current answer? Y/N: ")
-            # if flag=="y" or flag=="Y":
-            #     break
-    except wikipedia.exceptions.DisambiguationError as opt:
-        return (opt)
+    
+    return keywords
 
-def get_answer(usermessage):
+
+def webscrapper(userquery):
     base_url='https://www.google.com/search'
     
     params={
@@ -56,7 +50,7 @@ def get_answer(usermessage):
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36'
     }
 
-    params['q']=usermessage
+    params['q']=userquery
     
     response=requests.get(base_url,params=params,headers=headers)
 
@@ -84,6 +78,64 @@ def get_answer(usermessage):
     else:
         return getanswer(usermessage)
 
+def pdfscrapper(userquery):
+    with open(r'D:\Python\Projects\MajorProject\ChatImplementation\getpost\phy1.txt','rb') as f:
+        lines=f.readlines()
+    txt=str(lines).split(",",1)[1]
+    txtsplit=txt.split("\\n")
+    tokenizedpdf=[]
+    for i in txtsplit:
+        temp=str(i).replace("\\","")
+        tokenizedpdf.append(temp)
+    while("" in tokenizedpdf) :
+        tokenizedpdf.remove("")
+    tokenizedpdf=tokenizedpdf[:-1]
+
+    keywords=keyword_extractor(userquery)
+
+    context=''
+    for i in range(0,len(tokenizedpdf)):
+        if set(keywords[0][0].split()).issubset(set(tokenizedpdf[i].split())):
+            print(i)
+            for j in range(i,i+20):
+                context+=tokenizedpdf[j+1]
+            break
+
+    model=BertForQuestionAnswering.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
+    tokenizer=BertTokenizer.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
+    question = userquery
+    context = context
+    input_ids = tokenizer.encode(question, context)
+    # print('The input has a total of {:} tokens.'.format(len(input_ids)))
+    tokens = tokenizer.convert_ids_to_tokens(input_ids)
+    for token, id in zip(tokens, input_ids):
+        if id == tokenizer.sep_token_id:
+            print('')
+        print('{:<12} {:>6,}'.format(token, id))
+        if id == tokenizer.sep_token_id:
+            print('')
+    sep_index = input_ids.index(tokenizer.sep_token_id)
+    num_seg_a = sep_index + 1
+    num_seg_b = len(input_ids) - num_seg_a
+    segment_ids = [0]*num_seg_a + [1]*num_seg_b
+    assert len(segment_ids) == len(input_ids)
+    outputs = model(torch.tensor([input_ids]), 
+                                token_type_ids=torch.tensor([segment_ids]),
+                                return_dict=True)
+    start_scores = outputs.start_logits
+    end_scores = outputs.end_logits
+    answer_start = torch.argmax(start_scores)
+    answer_end = torch.argmax(end_scores)
+    answer = ' '.join(tokens[answer_start:answer_end+1])
+    answer = tokens[answer_start]
+    for i in range(answer_start + 1, answer_end + 1):
+        if tokens[i][0:2] == '##':
+            answer += tokens[i][2:]
+        else:
+            answer += ' ' + tokens[i]
+
+    return(answer)
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -91,8 +143,7 @@ def home():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    # return chatbot_response(userText)
-    return str(get_answer(userText))
+    return pdfscrapper(userText)
 
 
 if __name__ == "__main__":

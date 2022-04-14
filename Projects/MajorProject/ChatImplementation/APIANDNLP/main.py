@@ -14,15 +14,15 @@ while(True):
     keywords=custom_kw_extractor.extract_keywords(text)
     print("Extracted keywords are: ")
     print(keywords)
-    try:
-        for i in range(len(keywords)):
-            text=wikipedia.summary(keywords[i][0])
-            print(text)
-            doc=nlp(text)
-            print("Suggested Keywords: ")
-            print(doc.ents)
-            flag=input("Satisfied with current answer? Y/N: ")
-            if flag=="y" or flag=="Y":
-                break
-    except wikipedia.exceptions.DisambiguationError as opt:
-        print(opt)
+    # try:
+    #     for i in range(len(keywords)):
+    #         text=wikipedia.summary(keywords[i][0])
+    #         print(text)
+    #         doc=nlp(text)
+    #         print("Suggested Keywords: ")
+    #         print(doc.ents)
+    #         flag=input("Satisfied with current answer? Y/N: ")
+    #         if flag=="y" or flag=="Y":
+    #             break
+    # except wikipedia.exceptions.DisambiguationError as opt:
+    #     print(opt)
