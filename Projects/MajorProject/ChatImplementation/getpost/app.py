@@ -27,7 +27,6 @@ def keyword_extractor(userquery):
     
     return keywords
 
-
 def webscrapper(userquery):
     base_url='https://www.google.com/search'
     
@@ -75,8 +74,10 @@ def webscrapper(userquery):
         return (str(title[0]).split(">")[1].split("<")[0])
     elif content.findAll('div',{'class':'Z0LcW'})!=[]:
         return str(content.findAll('div',{'class':'Z0LcW'}))
+    elif content.findAll('div',{'class':'IZ6rdc'})!=[]:
+        return str(content.findAll('div',{'class':'IZ6rdc'}))
     else:
-        return getanswer(usermessage)
+        return "I am stil learning, please keep posted I will be answer that in the future"
 
 def pdfscrapper(userquery,department):
     if department=='p1':
@@ -191,24 +192,6 @@ def pdfscrapper(userquery,department):
 
     return(answer)
 
-# def questionclassifier(userquery):
-#     classifier=userquery.split(",")
-#     if classifier[1]=='p1':
-#         return pdfscrapper(classifier[0],classifier[1])
-#         pass
-#     elif classifier[1]=='p2':
-#         return 'You have Selected P2'
-#         pass
-#     elif classifier[1]=='b1':
-#         return 'You have Selected B1'
-#         pass
-#     elif classifier[1]=='b2':
-#         return 'You have Selected B2'
-#         pass
-#     else:
-#         return 'Please select your specific department before asking a question'
-#         pass
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -219,8 +202,20 @@ def get_bot_response():
     # return pdfscrapper(userText)
     classifier=userText.split(",")
     print(classifier[0],classifier[1])
-    return(pdfscrapper(classifier[0],classifier[1]))
-
+    if classifier[0]=="NO":
+        with open('D:\Python\Projects\MajorProject\ChatImplementation\getpost\session.txt','r') as f:
+            lines=f.readlines()
+        return webscrapper(lines[0])
+    elif classifier[0]=="YES":
+        return "Happy to Help!"
+    else:
+        with open('D:\Python\Projects\MajorProject\ChatImplementation\getpost\session.txt','w') as f:
+            f.truncate(0)
+            f.write(classifier[0])
+        temp=userText
+        return(pdfscrapper(classifier[0],classifier[1]))
+        # return webscrapper(classifier[0])
+        # return input()
 
 if __name__ == "__main__":
     app.run()

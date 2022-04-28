@@ -117,7 +117,7 @@
                             </div>
 
                             <div class="msg-text">${text}</div>
-                            <div class='msg-text'>Is the Answer upto your expectations?  <a href="#">Yes</a>  <a href="#">No</a></div>
+                            <div class='msg-text'>Is the Answer upto your expectations?  <a href='#' onclick="func_yes()">Yes</a>  <a href='#' onclick="func_no()">No</a></div>
                           </div>
                         </div>
                         `;
@@ -154,6 +154,22 @@
 
     var dt=new Date();
     document.getElementById('date-time').innerHTML=formatDate(dt);
+
+    function func_yes(){
+      var book=document.getElementById("book-select");
+
+      var selectedbook=book.value;
+
+      botResponse("YES",selectedbook)
+    }
+
+    function func_no(){
+      var book=document.getElementById("book-select");
+
+      var selectedbook=book.value;
+      
+      botResponse("NO",selectedbook)
+    }
 
   </script>
 

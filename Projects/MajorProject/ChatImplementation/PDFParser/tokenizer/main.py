@@ -12,7 +12,6 @@ for i in dark:
 
 while("" in harsh) :
     harsh.remove("")
-print(harsh)
 
 harsh=harsh[:-1]
 
@@ -21,10 +20,10 @@ k=search.split()
 dhokla=""
 for i in range(0, len(harsh)):
     if set(k).issubset(set(harsh[i].split())):
-        print("success")
+        # print("success")
         print(i)
         for j in range(i,i+15):
-            print("success")
+            # print("success")
             dhokla+=harsh[j+1]
 
 print(dhokla)
